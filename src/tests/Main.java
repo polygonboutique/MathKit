@@ -13,9 +13,14 @@ public class Main {
         float4x4 S = new float4x4().initScale(2,3,4);
         M = M.multiply(S);
 
-        float3 v = new float3(1, 2, 4);
-        System.out.println(M);
 
-        System.out.println(M.multiply(v));
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < 4; j++) {
+                M.m[i][j] = 1 + i + j;
+            }
+        }
+
+
+        System.out.println(M.inverseTranslationRotation());
     }
 }

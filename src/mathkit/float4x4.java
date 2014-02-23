@@ -471,9 +471,9 @@ public class float4x4 {
         result.m[2][0] = m[0][2]; result.m[2][1] = m[1][2]; result.m[2][2] = m[2][2];
 
 	    /* dot the t vector and the transposed rotation matrix */
-        result.m[0][3] = -(result.m[0][0] * m[0][3] + result.m[0][1] * m[1][3] + result.m[0][2] * m[2][3]);
-        result.m[1][3] = -(result.m[1][0] * m[0][3] + result.m[1][1] * m[1][3] + result.m[1][2] * m[2][3]);
-        result.m[2][3] = -(result.m[2][0] * m[0][3] + result.m[2][1] * m[1][3] + result.m[2][2] * m[2][3]);
+        result.m[0][3] = -(getRow0().xyz().dot(getColumn3().xyz()));
+        result.m[1][3] = -(getRow1().xyz().dot(getColumn3().xyz()));
+        result.m[2][3] = -(getRow2().xyz().dot(getColumn3().xyz()));
 
        return result;
     }
