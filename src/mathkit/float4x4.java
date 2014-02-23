@@ -153,36 +153,6 @@ public class float4x4 {
     public float4x4 transposed() {
         return new float4x4(getColumn0(), getColumn1(), getColumn2(), getColumn3());
     }
-    /**
-     * scales all matrix values by a given scalar
-     * @param scalar
-     * @return scaled matrix
-     */
-    public float4x4 multiply(float scalar) {
-        float4x4 result = new float4x4();
-
-        result.m[0][0] = m[0][0] * scalar;
-        result.m[0][1] = m[0][1] * scalar;
-        result.m[0][2] = m[0][2] * scalar;
-        result.m[0][3] = m[0][3] * scalar;
-
-        result.m[1][0] = m[1][0] * scalar;
-        result.m[1][1] = m[1][1] * scalar;
-        result.m[1][2] = m[1][2] * scalar;
-        result.m[1][3] = m[1][3] * scalar;
-
-        result.m[2][0] = m[2][0] * scalar;
-        result.m[2][1] = m[2][1] * scalar;
-        result.m[2][2] = m[2][2] * scalar;
-        result.m[2][3] = m[2][3] * scalar;
-
-        result.m[3][0] = m[3][0] * scalar;
-        result.m[3][1] = m[3][1] * scalar;
-        result.m[3][2] = m[3][2] * scalar;
-        result.m[3][3] = m[3][3] * scalar;
-
-        return result;
-    }
 
     /**
      * initializes a row translation matrix
@@ -319,7 +289,6 @@ public class float4x4 {
         return scaleMatrix;
     }
 
-
     /**
      * sets up a orthographic projection matrix
      * @param left
@@ -411,6 +380,71 @@ public class float4x4 {
         perspectiveMat.m[3][3] = 1f;
 
         set(perspectiveMat);
+    }
+
+    /* multiplications */
+
+    /**
+     * scales all matrix values by a given scalar
+     * @param scalar
+     * @return scaled matrix
+     */
+    public float4x4 multiply(float scalar) {
+        float4x4 result = new float4x4();
+
+        result.m[0][0] = m[0][0] * scalar;
+        result.m[0][1] = m[0][1] * scalar;
+        result.m[0][2] = m[0][2] * scalar;
+        result.m[0][3] = m[0][3] * scalar;
+
+        result.m[1][0] = m[1][0] * scalar;
+        result.m[1][1] = m[1][1] * scalar;
+        result.m[1][2] = m[1][2] * scalar;
+        result.m[1][3] = m[1][3] * scalar;
+
+        result.m[2][0] = m[2][0] * scalar;
+        result.m[2][1] = m[2][1] * scalar;
+        result.m[2][2] = m[2][2] * scalar;
+        result.m[2][3] = m[2][3] * scalar;
+
+        result.m[3][0] = m[3][0] * scalar;
+        result.m[3][1] = m[3][1] * scalar;
+        result.m[3][2] = m[3][2] * scalar;
+        result.m[3][3] = m[3][3] * scalar;
+
+        return result;
+    }
+
+    /**
+     * matrix multiplication
+     * @param mat
+     * @return (this * mat)
+     */
+    public float4x4 multiply(float4x4 mat){
+        float4 row0 = new float4(getRow0().dot(mat.getColumn0()), getRow0().dot(mat.getColumn1()), getRow0().dot(mat.getColumn2()), getRow0().dot(mat.getColumn3()));
+        float4 row1 = new float4(getRow1().dot(mat.getColumn0()), getRow1().dot(mat.getColumn1()), getRow1().dot(mat.getColumn2()), getRow1().dot(mat.getColumn3()));
+        float4 row2 = new float4(getRow2().dot(mat.getColumn0()), getRow2().dot(mat.getColumn1()), getRow2().dot(mat.getColumn2()), getRow2().dot(mat.getColumn3()));
+        float4 row3 = new float4(getRow3().dot(mat.getColumn0()), getRow3().dot(mat.getColumn1()), getRow3().dot(mat.getColumn2()), getRow3().dot(mat.getColumn3()));
+        return new float4x4(row0, row1, row2, row3);
+    }
+
+    /* inverse */
+
+    public float4x4 inverseTranslationRotation(){
+
+        float4x4 result = new float4x4();
+
+        /* transpose the upper 3x3 */
+        result.m[0][0] = m[0][0]; result.m[0][1] = m[1][0]; result.m[0][2] = m[2][0];
+        result.m[1][0] = m[0][1]; result.m[1][1] = m[1][1]; result.m[1][2] = m[2][1];
+        result.m[2][0] = m[0][2]; result.m[2][1] = m[1][2]; result.m[2][2] = m[2][2];
+
+	    /* dot the t vector and the transposed rotation matrix */
+        result.m[0][3] = -(result.m[0][0] * m[0][3] + result.m[0][1] * m[1][3] + result.m[0][2] * m[2][3]);
+        result.m[1][3] = -(result.m[1][0] * m[0][3] + result.m[1][1] * m[1][3] + result.m[1][2] * m[2][3]);
+        result.m[2][3] = -(result.m[2][0] * m[0][3] + result.m[2][1] * m[1][3] + result.m[2][2] * m[2][3]);
+
+       return result;
     }
 
     /**

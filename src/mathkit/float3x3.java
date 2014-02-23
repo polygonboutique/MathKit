@@ -78,29 +78,6 @@ public class float3x3 {
     }
 
     /**
-     * multiplies the whole matrix componentwise by a scalar
-     * @param scalar
-     * @return scaled matrix
-     */
-    public float3x3 multiply(float scalar){
-        float3x3 result = new float3x3();
-
-        result.m[0][0] = m[0][0] * scalar;
-        result.m[0][1] = m[0][1] * scalar;
-        result.m[0][2] = m[0][2] * scalar;
-
-        result.m[1][0] = m[1][0] * scalar;
-        result.m[1][1] = m[1][1] * scalar;
-        result.m[1][2] = m[1][2] * scalar;
-
-        result.m[2][0] = m[2][0] * scalar;
-        result.m[2][1] = m[2][1] * scalar;
-        result.m[2][2] = m[2][2] * scalar;
-
-        return result;
-    }
-
-    /**
      * returns the x components as a 3d vector
      * @return x components as a 3d vector
      */
@@ -174,6 +151,29 @@ public class float3x3 {
         float3 row2 = new float3(getRow2().dot(mat.getColumn0()), getRow2().dot(mat.getColumn1()), getRow2().dot(mat.getColumn2()));
 
         return new float3x3(row0, row1, row2);
+    }
+
+    /**
+     * multiplies the whole matrix componentwise by a scalar
+     * @param scalar
+     * @return scaled matrix
+     */
+    public float3x3 multiply(float scalar){
+        float3x3 result = new float3x3();
+
+        result.m[0][0] = m[0][0] * scalar;
+        result.m[0][1] = m[0][1] * scalar;
+        result.m[0][2] = m[0][2] * scalar;
+
+        result.m[1][0] = m[1][0] * scalar;
+        result.m[1][1] = m[1][1] * scalar;
+        result.m[1][2] = m[1][2] * scalar;
+
+        result.m[2][0] = m[2][0] * scalar;
+        result.m[2][1] = m[2][1] * scalar;
+        result.m[2][2] = m[2][2] * scalar;
+
+        return result;
     }
 
     /**
