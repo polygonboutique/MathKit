@@ -219,8 +219,8 @@ public class float3 {
      * @return new float3
      */
     public float3 divide(float factor) {
-        float inva = 1.0f / factor;
-        return new float3(x * inva, y * inva, z * inva);
+        float inv = 1.0f / factor;
+        return new float3(x * inv, y * inv, z * inv);
     }
 
     /**
@@ -298,7 +298,7 @@ public class float3 {
     public float distanceEuclid(float3 u){
         float ex = (x - u.x);
         float ey = (y - u.y);
-        float ez = (z -u.z);
+        float ez = (z - u.z);
         return (float) Math.sqrt(ex * ex + ey * ey + ez * ez);
     }
 
@@ -353,8 +353,6 @@ public class float3 {
     public float[] toFloat() {
         return new float[] { x, y, z };
     }
-
-	/* glsl style swizzling */
 
     /* float 2 */
     public float2 xx() {

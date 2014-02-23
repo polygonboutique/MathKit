@@ -126,8 +126,8 @@ public class float4 {
      * @return scaled down vector
      */
     public float4 divide(float factor){
-        float inva = 1.0f / factor;
-        return new float4(x * inva, y * inva, z * inva, w * inva);
+        float inv = 1.0f / factor;
+        return new float4(x * inv, y * inv, z * inv, w * inv);
     }
 
     /**
@@ -142,7 +142,7 @@ public class float4 {
      * @return vector length
      */
     public float length(){
-        return (float) Math.sqrt(x*x + y*y + z*z + w*w);
+        return (float) Math.sqrt(x * x + y * y + z * z + w * w);
     }
 
     /**

@@ -63,7 +63,7 @@ public class float2 {
      * @return float2
      */
     public float2 divide(float2 u){
-        return new float2( x / u.x, y /u.y);
+        return new float2( x / u.x, y / u.y);
     }
 
     /**
@@ -72,8 +72,8 @@ public class float2 {
      * @return new float2
      */
     public float2 divide(float factor){
-        float inva = 1.0f / factor;
-        return new float2(x * inva, y * inva);
+        float inv = 1.0f / factor;
+        return new float2(x * inv, y * inv);
     }
 
     /**
@@ -91,7 +91,7 @@ public class float2 {
      * @return vectorlength
      */
     public float length(){
-        return (float) Math.sqrt(x*x + y*y);
+        return (float) Math.sqrt(x * x + y * y);
     }
 
     /**
@@ -99,7 +99,7 @@ public class float2 {
      * @return squared vectorlength
      */
     public float lengthSquared(){
-        return (x*x + y*y);
+        return (x * x + y * y);
     }
 
     /**
@@ -278,9 +278,7 @@ public class float2 {
         return new float[]{x, y};
     }
 
-	/* glsl style swizzling */
-
-    /* float 2*/
+    /* float 2 */
     public float2 xx(){
         return new float2(x, x);
     }
