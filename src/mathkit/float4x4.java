@@ -428,8 +428,46 @@ public class float4x4 {
         return new float4x4(row0, row1, row2, row3);
     }
 
+    /**
+     * multiplies a 4d vector with the matrix
+     * @param v
+     * @return (mat * vector)
+     */
+    public float4 multiply(float4 v){
+        return new float4(v.dot(getRow0()), v.dot(getRow1()), v.dot(getRow2()), v.dot(getRow3()));
+    }
+
+    /**
+     * multiplies a 3d vector with the matrix
+     * the vector gets divided by the homogenous coordinate
+     * Source: openFrameworks matrix class !
+     * @param v
+     * @return (mat * vector)
+     */
+    public float3 multiply(float3 v){
+        float homogenousDivideFactor = 1.0f / (m[3][0] * v.x + m[3][1] * v.y + m[3][2] * v.z + m[3][3]);
+
+        // now we multiply and divide by the homogenous coordinate (1)
+        return new float3(  (m[0][0] * v.x + m[0][1] * v.y + m[0][2] * v.z + m[0][3]) * homogenousDivideFactor,
+                            (m[1][0] * v.x + m[1][1] * v.y + m[1][2] * v.z + m[1][3]) * homogenousDivideFactor,
+                            (m[2][0] * v.x + m[2][1] * v.y + m[2][2] * v.z + m[2][3]) * homogenousDivideFactor);
+    }
+
+    /**
+     * multiplies a 3d vector with the matrix
+     * the homogenous coordinate gets ignored!
+     * @param v
+     * @return (mat * vector)
+     */
+    public float3 multiplyNoHomogenous(float3 v){
+        return new float3(v.dot(getRow0().xyz()), v.dot(getRow1().xyz()), v.dot(getRow2().xyz()));
+    }
+
     /* inverse */
 
+    /**
+     *  invert the translation and rotation
+     */
     public float4x4 inverseTranslationRotation(){
 
         float4x4 result = new float4x4();

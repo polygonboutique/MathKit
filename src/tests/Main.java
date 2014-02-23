@@ -1,20 +1,19 @@
 package tests;
 
+import mathkit.float3;
 import mathkit.float3x3;
+import mathkit.float4;
 import mathkit.float4x4;
 
 public class Main {
 
     public static void main(String[] args) {
         float4x4 M = new float4x4();
-        float4x4 S = new float4x4();
 
-        M = M.multiply(2.0f);
-        S = S.multiply(15.0f);
+        M = M.initTranslationColumn(1,1,1);
 
-        float4x4 R = M.multiply(S);
+        float3 v = new float3(1, 2, 4);
 
-        R = R.inverseTranslationRotation();
-        System.out.println(R);
+        System.out.println(M.multiply(v));
     }
 }
