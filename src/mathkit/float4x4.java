@@ -369,17 +369,14 @@ public class float4x4 {
      * @param farPlane
      */
     public void setPerspective2(float fieldOfView, float aspectRatio, float nearPlane, float farPlane) {
-        float4x4 perspectiveMat = new float4x4();
         float f = (float) (1.0 / Math.tan(Math.toRadians(fieldOfView / 2)));
 
-        perspectiveMat.m[0][0] = (float) f / aspectRatio;
-        perspectiveMat.m[1][1] = f;
-        perspectiveMat.m[2][2] = (float) (farPlane + nearPlane) / (nearPlane - farPlane);
-        perspectiveMat.m[2][3] = -1f;
-        perspectiveMat.m[3][2] = (2 * farPlane * nearPlane) / (nearPlane - farPlane);
-        perspectiveMat.m[3][3] = 1f;
-
-        set(perspectiveMat);
+        m[0][0] = (float) f / aspectRatio;
+        m[1][1] = f;
+        m[2][2] = (float) (farPlane + nearPlane) / (nearPlane - farPlane);
+        m[2][3] = -1f;
+        m[3][2] = (2 * farPlane * nearPlane) / (nearPlane - farPlane);
+        m[3][3] = 1f;
     }
 
     /* multiplications */
