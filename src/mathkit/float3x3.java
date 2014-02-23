@@ -154,6 +154,15 @@ public class float3x3 {
     }
 
     /**
+     * multiplies a 3d vector with the matrix
+     * @param v
+     * @return (mat * vector)
+     */
+    public float3 multiply(float3 v){
+        return new float3(v.dot(getRow0()), v.dot(getRow1()), v.dot(getRow2()));
+    }
+
+    /**
      * multiplies the whole matrix componentwise by a scalar
      * @param scalar
      * @return scaled matrix
