@@ -321,7 +321,7 @@ public class float4x4 {
 
 
     /**
-     * sets up a orthogonal projection matrix
+     * sets up a orthographic projection matrix
      * @param left
      * @param right
      * @param bottom
@@ -342,7 +342,7 @@ public class float4x4 {
     }
 
     /**
-     * sets up a orthogonal projection matrix
+     * intis a a orthographic projection matrix
      * @param left
      * @param right
      * @param bottom
@@ -352,16 +352,7 @@ public class float4x4 {
      */
     public float4x4 initOrthographic(float left, float right, float bottom, float top, float nearPlane, float farPlane) {
         float4x4 orthoMatrix = new float4x4();
-
-        orthoMatrix.m[0][0] = (float) 2.0 / (right - left);
-        orthoMatrix.m[1][1] = (float) 2.0 / (top - bottom);
-        orthoMatrix.m[2][2] = (float) -2.0 / (farPlane - nearPlane);
-
-        orthoMatrix.m[0][3] = -(right + left) / (right - left);
-        orthoMatrix.m[1][3] = -(top + bottom) / (top - bottom);
-        orthoMatrix.m[2][3] = -(farPlane + nearPlane) / (farPlane - nearPlane);
-
-        orthoMatrix.m[3][3] = 1.0f;
+        orthoMatrix.setOrthographic(left, right, bottom, top, nearPlane, farPlane);
         return orthoMatrix;
     }
 
@@ -397,21 +388,7 @@ public class float4x4 {
      */
     public float4x4 initPerspective(float fieldOfView, float aspectRatio, float nearPlane, float farPlane) {
         float4x4 perspectiveMatrix = new float4x4();
-
-        float range = (float) Math.tan(Math.toRadians(fieldOfView) / 2.0f) * nearPlane;
-        float left = -range * aspectRatio;
-        float right = range * aspectRatio;
-        float bottom = -range;
-        float top = range;
-
-        perspectiveMatrix.m[0][0] = ((2.0f * nearPlane) / (right - left));
-        perspectiveMatrix.m[0][2] = ((right+left)/(right-left));
-        perspectiveMatrix.m[1][1] = ((2.0f * nearPlane) / (top - bottom));
-        perspectiveMatrix.m[1][2] = ((top+bottom)/(top-bottom));
-        perspectiveMatrix.m[2][2] = (-(farPlane + nearPlane) / (farPlane - nearPlane));
-        perspectiveMatrix.m[2][3] = -(2.0f * farPlane * nearPlane) / (farPlane - nearPlane);
-        perspectiveMatrix.m[3][2] = -1.0f;
-
+        perspectiveMatrix.setPerspective(fieldOfView, aspectRatio, nearPlane, farPlane);
         return perspectiveMatrix;
     }
 
@@ -446,6 +423,7 @@ public class float4x4 {
 
     /**
      * parses this matrix in a float buffer
+     * used to transfer the matrix to gpu
      * @return float buffer
      */
     public FloatBuffer toBuffer() {
