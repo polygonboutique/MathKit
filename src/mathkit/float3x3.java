@@ -93,9 +93,9 @@ public class float3x3 {
         result.m[1][1] = m[1][1] * scalar;
         result.m[1][2] = m[1][2] * scalar;
 
-        result.m[2][0] = m[1][0] * scalar;
-        result.m[2][1] = m[1][1] * scalar;
-        result.m[2][2] = m[1][2] * scalar;
+        result.m[2][0] = m[2][0] * scalar;
+        result.m[2][1] = m[2][1] * scalar;
+        result.m[2][2] = m[2][2] * scalar;
 
         return result;
     }
@@ -159,6 +159,21 @@ public class float3x3 {
     public float3x3 inverse(){
 		/* because this is a openGL rotation matrix, we can simply transpose it to inverse it */
         return transpose();
+    }
+
+    /* multiplications */
+
+    /**
+     * matrix multiplication
+     * @param mat
+     * @return (this * mat)
+     */
+    public float3x3 multiply(float3x3 mat){
+        float3 row0 = new float3(getRow0().dot(mat.getColumn0()), getRow0().dot(mat.getColumn1()), getRow0().dot(mat.getColumn2()));
+        float3 row1 = new float3(getRow1().dot(mat.getColumn0()), getRow1().dot(mat.getColumn1()), getRow1().dot(mat.getColumn2()));
+        float3 row2 = new float3(getRow2().dot(mat.getColumn0()), getRow2().dot(mat.getColumn1()), getRow2().dot(mat.getColumn2()));
+
+        return new float3x3(row0, row1, row2);
     }
 
     /**

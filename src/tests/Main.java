@@ -1,13 +1,14 @@
 package tests;
 
-import mathkit.float2;
+import mathkit.float3x3;
 
 public class Main {
 
     public static void main(String[] args) {
-        float2 u = new float2(10, 10);
-        float2 v = new float2(30, 20);
+        float3x3 M = new float3x3();
+        float3x3 S = new float3x3();
+        S = S.multiply(15.0f);
 
-        System.out.println(u.angleBetween2(v));
+        System.out.println(M.multiply(S));
     }
 }
