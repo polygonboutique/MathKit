@@ -113,7 +113,7 @@ public class float3 {
      * @param tangent
      * @return surface binormal vector
      */
-    public float3 getVertexBinormal(float3 normal, float3 tangent){
+    public float3 makeBinormal(float3 normal, float3 tangent){
         return normal.cross(tangent);
     }
 	
