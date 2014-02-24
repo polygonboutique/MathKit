@@ -1,6 +1,8 @@
 Linear Algebra Math Kit for game development
+===
 
-Next Revision:
+Next Revision
+===
 + Quaternions
 + Euler angles
 + Interpolation (LERP & SLERP)
