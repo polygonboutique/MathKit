@@ -181,8 +181,8 @@ public class float2 {
      * @return new float2
      */
     public float2 rotate(float angleInDegrees) {
-        float cs = (float) Math.cos(Math.toRadians(angleInDegrees));
-        float sn = (float) Math.sin(Math.toRadians(angleInDegrees));
+        float cs = (float) Math.cos(Constants.toRadians(angleInDegrees));
+        float sn = (float) Math.sin(Constants.toRadians(angleInDegrees));
         float px = x * cs - y * sn;
         float py = x * sn + y * cs;
         return new float2(px, py);
@@ -250,7 +250,7 @@ public class float2 {
      * @return float
      */
     public float angleBetween(float2 u){
-        return (float) (Math.atan2(x * u.y - y * u.x, x * u.x + y * u.y) / Math.PI * 180);
+        return (float) (Math.atan2(x * u.y - y * u.x, x * u.x + y * u.y) * Constants.ONE_OVER_180_PI);
     }
 
     /**
@@ -260,7 +260,7 @@ public class float2 {
      * @return float
      */
     public float angleBetween2(float2 u){
-        return (float) (Math.acos(this.normalized().dot(u.normalized())) / Math.PI * 180);
+        return (float) (Math.acos(this.normalized().dot(u.normalized())) * Constants.ONE_OVER_180_PI);
     }
 
     /**

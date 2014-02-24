@@ -224,7 +224,7 @@ public class float4x4 {
      * @return rotation matrix for the x axis
      */
     public float4x4 initRotationX(float angle) {
-        float RAD = (float) Math.toRadians(angle);
+        float RAD = (float) Constants.toRadians(angle);
         float cos = (float) Math.cos(RAD);
         float sin = (float) Math.sin(RAD);
 
@@ -242,7 +242,7 @@ public class float4x4 {
      * @return rotation matrix for the y axis
      */
     public float4x4 initRotationY(float angle) {
-        float RAD = (float) Math.toRadians(angle);
+        float RAD = (float) Constants.toRadians(angle);
         float cos = (float) Math.cos(RAD);
         float sin = (float) Math.sin(RAD);
 
@@ -260,7 +260,7 @@ public class float4x4 {
      * @return rotation matrix for the z axis
      */
     public float4x4 initRotateZ(float angle) {
-        float RAD = (float) Math.toRadians(angle);
+        float RAD = (float) Constants.toRadians(angle);
         float cos = (float) Math.cos(RAD);
         float sin = (float) Math.sin(RAD);
 
@@ -363,7 +363,7 @@ public class float4x4 {
      * @param farPlane
      */
     public void setPerspective(float fieldOfView, float aspectRatio, float nearPlane, float farPlane) {
-        float range = (float) Math.tan(Math.toRadians(fieldOfView) / 2.0f) * nearPlane;
+        float range = (float) Math.tan(Constants.toRadians(fieldOfView) / 2.0f) * nearPlane;
         float left = -range * aspectRatio;
         float right = range * aspectRatio;
         float bottom = -range;
@@ -399,7 +399,7 @@ public class float4x4 {
      * @param farPlane
      */
     public void setPerspective2(float fieldOfView, float aspectRatio, float nearPlane, float farPlane) {
-        float f = (float) (1.0 / Math.tan(Math.toRadians(fieldOfView / 2)));
+        float f = (float) (1.0 / Math.tan(Constants.toRadians(fieldOfView / 2)));
 
         m[0][0] = (float) f / aspectRatio;
         m[1][1] = f;

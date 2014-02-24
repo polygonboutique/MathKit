@@ -308,7 +308,7 @@ public class float3 {
      * @return float (angle between 2 vectors)
      */
     public float angleBetween(float3 u) {
-        return (float) (Math.acos((dot(u) / (length() * u.length()))) / Math.PI * 180);
+        return (float) (Math.acos((dot(u) / (length() * u.length()))) * Constants.ONE_OVER_180_PI);
     }
 
     /**
