@@ -513,11 +513,16 @@ public class float4x4 {
      * @return float array
      */
     public float[] toFloat() {
-        return new float[] { m[0][0], m[0][1], m[0][2], m[0][3], m[1][0], m[1][1], m[1][2], m[1][3], m[2][0], m[2][1], m[2][2], m[2][3], m[3][0], m[3][1], m[3][2], m[3][3] };
+        float[] c0 = getColumn0().toFloat();
+        float[] c1 = getColumn1().toFloat();
+        float[] c2 = getColumn2().toFloat();
+        float[] c3 = getColumn3().toFloat();
+        return new float[] { c0[0], c0[1], c0[2], c0[3], c1[0], c1[1], c1[2], c1[3], c2[0], c2[1], c2[2], c2[3], c3[0], c3[1], c3[2], c3[3] };
     }
 
     /**
      * parses this matrix in a float buffer
+     * column after column
      * used to transfer the matrix to gpu
      * @return float buffer
      */

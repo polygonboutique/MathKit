@@ -219,11 +219,15 @@ public class float3x3 {
      * @return float array
      */
     public float[] toFloat(){
-        return new float[] { m[0][0], m[0][1], m[0][2], m[1][0], m[1][1], m[1][2], m[2][0], m[2][1], m[2][2] };
+        float[] c0 = getColumn0().toFloat();
+        float[] c1 = getColumn1().toFloat();
+        float[] c2 = getColumn2().toFloat();
+        return new float[] { c0[0], c0[1], c0[2], c1[0], c1[1], c1[2], c2[0], c2[1], c2[2] };
     }
 
     /**
      * parses this matrix into a float buffer
+     * column after column
      * @return float buffer
      */
     public FloatBuffer toBuffer(){
