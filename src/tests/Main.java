@@ -1,15 +1,16 @@
 package tests;
 
-import mathkit.Constants;
-import mathkit.float2;
-import mathkit.float3;
-import mathkit.float4x4;
+import mathkit.*;
 
 public class Main {
 
     public static void main(String[] args) {
-        float2 u = new float2(0, 1);
-        float2 v = new float2(1, 0);
-        System.out.println(u.rotate(90));
+        float4x4 m = new float4x4();
+        m.setColumn0(new float4(1, 1, 1, 1));
+        m.setColumn1(new float4(2, 2, 2, 2));
+        m.setColumn2(new float4(3, 3, 3, 3));
+        m.setColumn3(new float4(4, 4, 4, 4));
+
+        System.out.println(m);
     }
 }

@@ -166,6 +166,62 @@ public class float4x4 {
         return new float4(m[3][0], m[3][1], m[3][2], m[3][3]);
     }
 
+    public void setRow0(float4 v){
+        this.m[0][0] = v.x;
+        this.m[0][1] = v.y;
+        this.m[0][2] = v.z;
+        this.m[0][3] = v.w;
+    }
+
+    public void setRow1(float4 v){
+        this.m[1][0] = v.x;
+        this.m[1][1] = v.y;
+        this.m[1][2] = v.z;
+        this.m[1][3] = v.w;
+    }
+
+    public void setRow2(float4 v){
+        this.m[2][0] = v.x;
+        this.m[2][1] = v.y;
+        this.m[2][2] = v.z;
+        this.m[2][3] = v.w;
+    }
+
+    public void setRow3(float4 v){
+        this.m[3][0] = v.x;
+        this.m[3][1] = v.y;
+        this.m[3][2] = v.z;
+        this.m[3][3] = v.w;
+    }
+
+    public void setColumn0(float4 v){
+        this.m[0][0] = v.x;
+        this.m[1][0] = v.y;
+        this.m[2][0] = v.z;
+        this.m[3][0] = v.w;
+    }
+
+    public void setColumn1(float4 v){
+        this.m[0][1] = v.x;
+        this.m[1][1] = v.y;
+        this.m[2][1] = v.z;
+        this.m[3][1] = v.w;
+    }
+
+    public void setColumn2(float4 v){
+        this.m[0][2] = v.x;
+        this.m[1][2] = v.y;
+        this.m[2][2] = v.z;
+        this.m[3][2] = v.w;
+    }
+
+    public void setColumn3(float4 v){
+        this.m[0][3] = v.x;
+        this.m[1][3] = v.y;
+        this.m[2][3] = v.z;
+        this.m[3][3] = v.w;
+    }
+
     /**
      * resets this matrix to the identity matrix
      */
