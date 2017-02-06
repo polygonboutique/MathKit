@@ -1,4 +1,3 @@
-/**
  Copyright (c) 2013 - 2017, Sergej Schefer
  All rights reserved.
 
@@ -18,22 +17,3 @@
  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
  EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
-
-package mathkit;
-
-/* math constants */
-public class Constants {
-    public static final double PI = Math.PI;
-    public static final double TWO_PI = 2.0f * PI;
-    public static final double HALF_PI = 0.5f * PI;
-    public static final double ONE_FOURTH_PI = 0.25f * PI;
-    public static final double ONE_OVER_PI = 1.0f / PI;
-    public static final double ONE_OVER_TWOPI = 1.0f / TWO_PI;
-    public static final double DEGREES_TO_RADIANS = PI / 180.0f;
-    public static final double RADIANS_TO_DEGREE = 180.0f / PI;
-    public static final double ONE_OVER_180_PI = ONE_OVER_PI * 180;
-
-    public static double toRadians(double degrees){ return degrees * DEGREES_TO_RADIANS; }
-    public static double toDegrees(double radians){ return radians * RADIANS_TO_DEGREE; }
-}
