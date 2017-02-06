@@ -30,6 +30,19 @@ import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.FloatBuffer;
 
+/***
+ *	Layout: Column-Major
+ *
+ *	The data gets passed column by column to open gl.
+ *
+ *	00	10	20	30
+ *	01	11	21	31
+ *	02	12	22	32
+ *	03	13	23	33
+ *
+ *	float[16] = {00, 01, 02, 03, 10, 11, 12, 13, 20, 21, 22, 23, 30, 31, 32, 33};
+ */
+
 public class float4x4 {
     public float m[][] = new float[4][4];
 

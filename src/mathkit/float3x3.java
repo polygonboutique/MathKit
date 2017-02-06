@@ -33,7 +33,7 @@ import java.nio.FloatBuffer;
 /***
  *	Layout: Column-Major
  *
- *	The data gets passed column by colum to open gl.
+ *	The data gets passed column by column to open gl.
  *
  *	00	10	20
  *	01	11	21
